@@ -1,0 +1,25 @@
+//指定版本信息，不指定会报错
+syntax = "proto3";
+//后期生产go文件的包名
+package pd;
+//message为关键字，作用为定义一种消息类型
+message Person{
+    string name = 1;
+    int32 age = 2;
+//    repeated表示字段允许重复,对应go中的slice
+    repeated string emails =3;
+    repeated PhoneNumber phones =4;
+}
+
+//enum为关键字，作用为定义一种枚举类型
+enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+}
+
+//message位关键字，作用为定义一种消息类型可以被另外的消息类型嵌套使用
+message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+}
